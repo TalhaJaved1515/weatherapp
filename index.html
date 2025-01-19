@@ -9,80 +9,145 @@
 </head>
 
 <body>
-    <div>
+    <!-- <div>
         <input type="text" id="input" placeholder="Enter your city">
         <button id="btn">Search</button>
-    </div>
-    <h4 id="city-name">name</h4>
+    </div> -->
+
+
+
+    <div class="h-screen	w-full border-dashed	   h-100  flex 	 justify-center	 items-center  ">
+        <div class="  rounded-3xl  sm:h-auto sm:w-auto sm:border-2 border-red-400  h-full w-full	 		">
+            <div class="flex items-center	 	 justify-center	 sm:mt-2 mt-10    		border-5 border-red-400	w-full p-6">
+                <input type="text" id="input"
+                    class="text-2xl xl:rounded-3xl xl:text-6xl md:text-4xl w-4/5 border-2 border-red-400 rounded-2xl px-3  outline-none		"
+                    placeholder="Enter your city">
+
+                <img src="download (1).png" id="btn" alt="Search image"
+                    class="w-14	h-14 md:w-16 md:h-16 xl:h-20 xl:w-20	ml-6  border-2 border-blue-400 rounded-full  p-2	">
+            </div>
+           
+            <p id="error" class="w-full  text-6xl  flex  justify-center  items-center"></p>
+            <div class="w-full  grid	     items-center   	  justify-center text-center	  mt-8">
+                <h1 class=" w-full  items-center md:text-6xl  text-6xl	 xl:text-8xl justify-center flex text-center	 "
+                    id="city-temp">0°C</h1>
+                <p class="  w-full  items-center md:text-4xl xl:text-4xl text-2xl	text-center	  justify-center mt-2 flex"
+                    id="city-name">city name</p>
+            </div>
+            <div class="w-full flex-wrap	 mt-10 flex justify-center items-center mb-8	">
+                <div class="border-5 rounded-2xl mr-4 border-blue-400 h-36	w-36 h-auto w-auto ml-6	">
+                    <div class="w-auto h-auto flex justify-center items-center ">
+                        <img src="download.png" id="humidityimage" alt="Sample Image"
+                            class="h-28 w-28 md:h-32 md:w-32 xl:h-36 xl:w-36">
+                        <h2 class="text-2xl md:text-4xl xl:text-6xl" id="cityhumidity">99%</h2>
+                    </div>
+
+                    <div>
+                        <h3
+                            class="w-full border-5 border-red-400 flex  items-center  justify-center rounded-2xl md:text-2xl xl:text-4xl">
+                            Humidity</h3>
+                    </div>
+                </div>
+                <div class="border-5 rounded-2xl ml-4	  border-blue-400 h-36	w-36  h-auto w-auto mr-6	">
+                    <div class="h-auto w-auto flex justify-center items-center">
+                        <img src="download__1_-removebg-preview.png" alt="Sample Image" id="windimage"
+                            class="h-32 w-32 xl:w-36 xl:h-36">
+                        <h2 class="text-2xl md:text-4xl xl:text-6xl" id="windspeed">9.9 km/h</h2>
+
+                    </div>
+
+                    <div class="w-full border-5 border-red-400 flex items-center rounded-2xl  justify-center ">
+                        <h3 class="md:text-2xl xl:text-4xl">Wind Speed</h3>
+                    </div>
+                </div>
+                <div class=" w-full h-auto text-center">
+                    <h1 id="city-time" class="text-4xl mt-10 md:text-4xl xl:text-6xl ">time</h1>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- <h4 id="city-name">name</h4>
     <h3 id="city-temp">temp</h3>
     <p id="city-time">time</p>
     <p id="error" style="color: red;"></p>
     <p id="cityhumidity"></p>
-    <p id="windspeed">wind speed</p>
+    <p id="windspeed">wind speed</p> -->
+        <!-- <a href="sutructure.html">sutructure of weather application</a> -->
 
-    <script>
-        const btn = document.getElementById('btn');
-        const input = document.getElementById('input');
-        const cityname = document.getElementById('city-name');
-        const citytemp = document.getElementById('city-temp');
-        const citytime = document.getElementById('city-time');
-        const cityhumidity = document.getElementById('cityhumidity');
-        const windspeed = document.getElementById('windspeed');
-        const error = document.getElementById('error');
-    
-        async function getdata(cityname) {
-            try {
-                const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=9572aed135c84c1aa7a172448251101&q=${cityname}&aqi=yes`);
-                if (!response.ok) {
-                    throw new Error(`Network response was not ok: ${response.statusText}`);
+        <script>
+            const btn = document.getElementById('btn');
+            const input = document.getElementById('input');
+            const cityname = document.getElementById('city-name');
+            const citytemp = document.getElementById('city-temp');
+            const citytime = document.getElementById('city-time');
+            const cityhumidity = document.getElementById('cityhumidity');
+            const windimage = document.getElementById('windimage');
+            const humidityimage = document.getElementById('humidityimage');
+            const windspeed = document.getElementById('windspeed');
+            const error = document.getElementById('error');
+
+            async function getdata(cityname) {
+                try {
+                    const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=9572aed135c84c1aa7a172448251101&q=${cityname}&aqi=yes`);
+                    if (!response.ok) {
+                        throw new Error(`Network response was not ok: ${response.statusText}`);
+                    }
+                    return await response.json();
+                } catch (err) {
+                    throw new Error(`Fetch failed: ${err.message}`);
                 }
-                return await response.json();
-            } catch (err) {
-                throw new Error(`Fetch failed: ${err.message}`);
             }
-        }
-    
-        cityname.style.display = 'none';
-        citytemp.style.display = 'none';
-        citytime.style.display = 'none';
-        cityhumidity.style.display = 'none';
-        windspeed.style.display = 'none';
-    
-        btn.addEventListener('click', async () => {
-            const value = input.value;
-            try {
-                const result = await getdata(value);
-                if (result.error) {
-                    error.innerText = 'Invalid location';
+            error.style.color = 'red'
+            cityname.style.display = 'none';
+            citytemp.style.display = 'none';
+            citytime.style.display = 'none';
+            cityhumidity.style.display = 'none';
+            windspeed.style.display = 'none';
+            windimage.style.display = 'none';
+            humidityimage.style.display = 'none';
+            btn.addEventListener('click', async () => {
+                const value = input.value;
+                try {
+                    const result = await getdata(value);
+                    if (result.error) {
+                        error.innerText = 'Invalid location';
+                        cityname.style.display = 'none';
+                        citytemp.style.display = 'none';
+                        citytime.style.display = 'none';
+                        cityhumidity.style.display = 'none';
+                        windspeed.style.display = 'none';
+                        windimage.style.display = 'none';
+                        humidityimage.style.display = 'none';
+                    } else {
+                        error.innerText = '';
+                        cityname.innerText = `${result.location.name}, ${result.location.region} - ${result.location.country}`;
+                        citytemp.innerText = `${result.current.temp_c}°C`;
+                        citytime.innerText = result.location.localtime;
+                        cityhumidity.innerText = `${result.current.humidity}%`;
+                        windspeed.innerText = `${result.current.gust_kph} km/h`;
+                        cityname.style.display = 'block';
+                        citytemp.style.display = 'block';
+                        citytime.style.display = 'block';
+                        cityhumidity.style.display = 'block';
+                        windspeed.style.display = 'block';
+                        windimage.style.display = 'block';
+                        humidityimage.style.display = 'block';
+                    }
+                }
+                catch (err) {
+                    error.innerText = `Invalid location`;
                     cityname.style.display = 'none';
                     citytemp.style.display = 'none';
                     citytime.style.display = 'none';
                     cityhumidity.style.display = 'none';
                     windspeed.style.display = 'none';
-                } else {
-                    error.innerText = '';
-                    cityname.innerText = `${result.location.name}, ${result.location.region} - ${result.location.country}`;
-                    citytemp.innerText = `${result.current.temp_c}°C`;
-                    citytime.innerText = result.location.localtime;
-                    cityhumidity.innerText = `${result.current.humidity}%`;
-                    windspeed.innerText = `${result.current.gust_kph} km/h`;
-                    cityname.style.display = 'block';
-                    citytemp.style.display = 'block';
-                    citytime.style.display = 'block';
-                    cityhumidity.style.display = 'block';
-                    windspeed.style.display = 'block';
+                    windimage.style.display = 'none';
+                    humidityimage.style.display = 'none';
                 }
-            } catch (err) {
-                error.innerText = `Failed to fetch weather data: ${err.message}`;
-                cityname.style.display = 'none';
-                citytemp.style.display = 'none';
-                citytime.style.display = 'none';
-                cityhumidity.style.display = 'none';
-                windspeed.style.display = 'none';
-            }
-        });
-    </script>
-    
+            });
+        </script>
+
 </body>
 
 </html>
