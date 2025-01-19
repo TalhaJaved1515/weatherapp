@@ -29,10 +29,10 @@
         const cityhumidity = document.getElementById('cityhumidity');
         const windspeed = document.getElementById('windspeed');
         const error = document.getElementById('error');
-
+    
         async function getdata(cityname) {
             try {
-                const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=9572aed135c84c1aa7a172448251101&q=${cityname}&aqi=yes`);
+                const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=9572aed135c84c1aa7a172448251101&q=${cityname}&aqi=yes`);
                 if (!response.ok) {
                     throw new Error(`Network response was not ok: ${response.statusText}`);
                 }
@@ -41,13 +41,13 @@
                 throw new Error(`Fetch failed: ${err.message}`);
             }
         }
-
+    
         cityname.style.display = 'none';
         citytemp.style.display = 'none';
         citytime.style.display = 'none';
         cityhumidity.style.display = 'none';
         windspeed.style.display = 'none';
-
+    
         btn.addEventListener('click', async () => {
             const value = input.value;
             try {
@@ -82,6 +82,7 @@
             }
         });
     </script>
+    
 </body>
 
 </html>
