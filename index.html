@@ -34,11 +34,11 @@
             try {
                 const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=9572aed135c84c1aa7a172448251101&q=${cityname}&aqi=yes`);
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    throw new Error(`Network response was not ok: ${response.statusText}`);
                 }
                 return await response.json();
             } catch (err) {
-                throw new Error('Fetch failed');
+                throw new Error(`Fetch failed: ${err.message}`);
             }
         }
 
@@ -73,7 +73,7 @@
                     windspeed.style.display = 'block';
                 }
             } catch (err) {
-                error.innerText = 'Failed to fetch weather data';
+                error.innerText = `Failed to fetch weather data: ${err.message}`;
                 cityname.style.display = 'none';
                 citytemp.style.display = 'none';
                 citytime.style.display = 'none';
