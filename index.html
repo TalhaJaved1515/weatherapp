@@ -9,15 +9,9 @@
 </head>
 
 <body>
-    <!-- <div>
-        <input type="text" id="input" placeholder="Enter your city">
-        <button id="btn">Search</button>
-    </div> -->
-
-
-
+   
     <div class="h-screen	w-full border-dashed	   h-100  flex 	 justify-center	 items-center  ">
-        <div class="  rounded-3xl  sm:h-auto sm:w-auto sm:border-2 border-red-400  h-full w-full	 		">
+        <div class="  rounded-3xl  sm:h-auto sm:w-auto   h-full w-full	 		">
             <div class="flex items-center	 	 justify-center	 sm:mt-2 mt-10    		border-5 border-red-400	w-full p-6">
                 <input type="text" id="input"
                     class="text-2xl xl:rounded-3xl xl:text-6xl md:text-4xl w-4/5 border-2 border-red-400 rounded-2xl px-3  outline-none		"
@@ -44,7 +38,7 @@
 
                     <div>
                         <h3
-                            class="w-full border-5 border-red-400 flex  items-center  justify-center rounded-2xl md:text-2xl xl:text-4xl">
+                            class="w-full border-5 border-red-400 flex  items-center  justify-center rounded-2xl md:text-2xl xl:text-4xl" id="humidityname">
                             Humidity</h3>
                     </div>
                 </div>
@@ -57,23 +51,16 @@
                     </div>
 
                     <div class="w-full border-5 border-red-400 flex items-center rounded-2xl  justify-center ">
-                        <h3 class="md:text-2xl xl:text-4xl">Wind Speed</h3>
+                        <h3 class="md:text-2xl xl:text-4xl" id="windname">Wind Speed</h3>
                     </div>
                 </div>
-                <div class=" w-full h-auto text-center">
-                    <h1 id="city-time" class="text-4xl mt-10 md:text-4xl xl:text-6xl ">time</h1>
+                <div class=" w-full h-auto text-center  mt-10">
+                    <h1 id="city-time" class="text-4xl "></h1>
                 </div>
             </div>
         </div>
 
 
-        <!-- <h4 id="city-name">name</h4>
-    <h3 id="city-temp">temp</h3>
-    <p id="city-time">time</p>
-    <p id="error" style="color: red;"></p>
-    <p id="cityhumidity"></p>
-    <p id="windspeed">wind speed</p> -->
-        <!-- <a href="sutructure.html">sutructure of weather application</a> -->
 
         <script>
             const btn = document.getElementById('btn');
@@ -86,6 +73,8 @@
             const humidityimage = document.getElementById('humidityimage');
             const windspeed = document.getElementById('windspeed');
             const error = document.getElementById('error');
+            const windname = document.getElementById('windname');
+            const humidityname = document.getElementById('humidityname');
 
             async function getdata(cityname) {
                 try {
@@ -106,6 +95,8 @@
             windspeed.style.display = 'none';
             windimage.style.display = 'none';
             humidityimage.style.display = 'none';
+            humidityname.style.display = 'none';
+            windname.style.display = 'none';
             btn.addEventListener('click', async () => {
                 const value = input.value;
                 try {
@@ -119,6 +110,8 @@
                         windspeed.style.display = 'none';
                         windimage.style.display = 'none';
                         humidityimage.style.display = 'none';
+                        humidityname.style.display = 'none';
+                       windname.style.display = 'none';
                     } else {
                         error.innerText = '';
                         cityname.innerText = `${result.location.name}, ${result.location.region} - ${result.location.country}`;
@@ -133,6 +126,8 @@
                         windspeed.style.display = 'block';
                         windimage.style.display = 'block';
                         humidityimage.style.display = 'block';
+                        humidityname.style.display = 'block';
+            windname.style.display = 'block';
                     }
                 }
                 catch (err) {
@@ -144,6 +139,8 @@
                     windspeed.style.display = 'none';
                     windimage.style.display = 'none';
                     humidityimage.style.display = 'none';
+                    humidityname.style.display = 'none';
+            windname.style.display = 'none';
                 }
             });
         </script>
