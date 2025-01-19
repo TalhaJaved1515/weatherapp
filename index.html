@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather API</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -20,8 +19,6 @@
     <p id="error" style="color: red;"></p>
     <p id="cityhumidity"></p>
     <p id="windspeed">wind speed</p>
-    <!-- Added style for visibility -->
-
 
     <script>
         const btn = document.getElementById('btn');
@@ -33,49 +30,55 @@
         const windspeed = document.getElementById('windspeed');
         const error = document.getElementById('error');
 
-        
-        async function getdata(cityname) { const promise = await fetch(`http://api.weatherapi.com/v1/current.json?key=9572aed135c84c1aa7a172448251101&q=${cityname}&aqi=yes`); return await promise.json(); }
+        async function getdata(cityname) {
+            try {
+                const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=9572aed135c84c1aa7a172448251101&q=${cityname}&aqi=yes`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return await response.json();
+            } catch (err) {
+                throw new Error('Fetch failed');
+            }
+        }
+
         cityname.style.display = 'none';
         citytemp.style.display = 'none';
         citytime.style.display = 'none';
-        cityhumidity.style.display = 'none'
-        windspeed.style.display = 'none'
+        cityhumidity.style.display = 'none';
+        windspeed.style.display = 'none';
+
         btn.addEventListener('click', async () => {
             const value = input.value;
-            const result = await getdata(value);
-            console.log(result);
-            if (result.error) {
-                error.innerText = 'Invalid location'
-                cityname.innerText = '';
-                citytemp.innerText = '';
-                citytime.innerText = '';
-
-
+            try {
+                const result = await getdata(value);
+                if (result.error) {
+                    error.innerText = 'Invalid location';
+                    cityname.style.display = 'none';
+                    citytemp.style.display = 'none';
+                    citytime.style.display = 'none';
+                    cityhumidity.style.display = 'none';
+                    windspeed.style.display = 'none';
+                } else {
+                    error.innerText = '';
+                    cityname.innerText = `${result.location.name}, ${result.location.region} - ${result.location.country}`;
+                    citytemp.innerText = `${result.current.temp_c}°C`;
+                    citytime.innerText = result.location.localtime;
+                    cityhumidity.innerText = `${result.current.humidity}%`;
+                    windspeed.innerText = `${result.current.gust_kph} km/h`;
+                    cityname.style.display = 'block';
+                    citytemp.style.display = 'block';
+                    citytime.style.display = 'block';
+                    cityhumidity.style.display = 'block';
+                    windspeed.style.display = 'block';
+                }
+            } catch (err) {
+                error.innerText = 'Failed to fetch weather data';
                 cityname.style.display = 'none';
                 citytemp.style.display = 'none';
                 citytime.style.display = 'none';
                 cityhumidity.style.display = 'none';
-                windspeed.style.display = 'none'
-
-
-                console.log('Invalid location');
-
-
-            } else {
-                error.innerText = '';
-
-                cityname.innerText = `${result.location.name}, ${result.location.region} - ${result.location.country}`;
-                citytemp.innerText = `${result.current.temp_c}°C`;
-                citytime.innerText = result.location.localtime;
-                cityhumidity.innerText = `${result.current.humidity}%`;
-                windspeed.innerText = `${result.current.gust_kph}  km/h`
-                console.log('valid location');
-                cityname.style.display = 'block';
-                citytemp.style.display = 'block';
-                citytime.style.display = 'block';
-                cityhumidity.style.display = 'block';
-                windspeed.style.display = 'block'
-
+                windspeed.style.display = 'none';
             }
         });
     </script>
