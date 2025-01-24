@@ -33,13 +33,14 @@ windimage.style.display = 'none';
 humidityimage.style.display = 'none';
 humidityname.style.display = 'none';
 windname.style.display = 'none';
-input.style.boxShadow= ' 0px 0px 10px rgba(30, 30, 30, 0.586)'
+input.style.boxShadow= ' 0px 0px 10px rgba(30, 30, 30, 0.586)';
 btn.addEventListener('click', async () => {
     const value = input.value;
+ 
     try {
         const result = await getdata(value);
         if (result.error) {
-            error.innerText = 'Invalid location';
+            error.innerText = 'Not Found';
             cityname.style.display = 'none';
             citytemp.style.display = 'none';
             citytime.style.display = 'none';
@@ -49,12 +50,15 @@ btn.addEventListener('click', async () => {
             humidityimage.style.display = 'none';
             humidityname.style.display = 'none';
            windname.style.display = 'none';
+           console.log('2')
            input.style.boxShadow= ' 0px 0px 10px red';
+         
+
         } else {
             error.innerText = '';
             cityname.innerText = `${result.location.name}, ${result.location.region} - ${result.location.country}`;
             citytemp.innerText = `${result.current.temp_c}°C`;
-            citytime.innerText = result.location.localtime;
+            citytime.innerText = `Local Time : ${result.location.localtime}`;
             cityhumidity.innerText = `${result.current.humidity}%`;
             windspeed.innerText = `${result.current.gust_kph} km/h`;
             cityname.style.display = 'block';
@@ -70,10 +74,11 @@ input.style.boxShadow= ' 0px 0px 10px rgb(0, 197, 0)'
         }
     }
     catch (err) {
-        error.innerText = `Invalid location`;
+        error.innerText = 'Not Found';
         cityname.style.display = 'none';
         citytemp.style.display = 'none';
         citytime.style.display = 'none';
+        console.log('1')
         cityhumidity.style.display = 'none';
         windspeed.style.display = 'none';
         windimage.style.display = 'none';
