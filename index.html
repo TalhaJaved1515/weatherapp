@@ -9,11 +9,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Numans&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&family=Sail&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Numans&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&family=Sail&display=swap" rel="stylesheet">
     <style>
-        h1,h2,h3,h4,h5,h6{
+        h1,h2,h4,h5,h6,input{
             font-family: "Numans", serif;
   font-weight: 400;
   font-style: normal;
+        }
+        p,h3{
+            font-family: "Numans", serif;
+  font-weight: 400;
+  font-style: normal;
+  
         }
     </style>
   
@@ -25,14 +34,14 @@
         <div class="  rounded-3xl     h-full w-full	 		">
             <div class="flex items-center	 	 justify-center	 sm:mt-20 mt-7    			w-full p-6">
                 <input type="text" id="input"
-                     class="text-2xl xl:rounded-3xl xl:text-4xl md:text-4xl w-4/5  rounded-2xl px-2   outline-none  md:w-6/12 border-red-400	 xl:w-5/12		 shadow-2xs  pb-2  pt-2
+                     class="text-2xl xl:rounded-3xl xl:text-4xl md:text-4xl w-4/5  rounded-2xl px-2   outline-none  md:w-6/12 border-red-400	  xl:w-5/12		 shadow-2xs  pb-2  pt-2
 
 
-                     " style="box-shadow: 0px 0px 10px rgba(30, 30, 30, 0.695);"
+                     " style="box-shadow: 0px 0px 10px rgba(30, 30, 30, 0.586);"
                     placeholder="Enter your city">
 
                 <img src="1-removebg-preview.png" id="btn" alt="Search image"
-                    class="w-14	h-14 md:w-16 md:h-16 xl:h-16 xl:w-16	ml-6  border-2 border-blue-400 rounded-full  p-2	">
+                    class="w-14	h-14 md:w-16 md:h-16 xl:h-16 xl:w-16	ml-6  rounded-full  p-2	" style="box-shadow: 0px 0px 10px rgba(30, 30, 30, 0.586);">
             </div>
            
             <p id="error" class="w-full  text-4xl  text-center
@@ -47,7 +56,7 @@
                 <div class=" rounded-2xl mr-4  h-36	w-36 h-auto w-auto ml-6	">
                     <div class="w-auto h-auto flex justify-center items-center   ">
                         <img src="download.png" id="humidityimage" alt="Sample Image"
-                            class="h-28 w-28 md:h-32 md:w-32 xl:h-32 xl:w-32 ">
+                            class="h-28 w-28 md:h-32 md:w-32 xl:h-32 xl:w-32  mb-4 mr-2">
                         <h2 class="text-2xl md:text-2xl xl:text-6xl " id="cityhumidity"></h2>
                     </div>
 
@@ -110,6 +119,7 @@ windimage.style.display = 'none';
 humidityimage.style.display = 'none';
 humidityname.style.display = 'none';
 windname.style.display = 'none';
+input.style.boxShadow= ' 0px 0px 10px rgba(30, 30, 30, 0.586)'
 btn.addEventListener('click', async () => {
     const value = input.value;
     try {
@@ -125,6 +135,7 @@ btn.addEventListener('click', async () => {
             humidityimage.style.display = 'none';
             humidityname.style.display = 'none';
            windname.style.display = 'none';
+           input.style.boxShadow= ' 0px 0px 10px red';
         } else {
             error.innerText = '';
             cityname.innerText = `${result.location.name}, ${result.location.region} - ${result.location.country}`;
@@ -141,6 +152,7 @@ btn.addEventListener('click', async () => {
             humidityimage.style.display = 'block';
             humidityname.style.display = 'block';
 windname.style.display = 'block';
+input.style.boxShadow= ' 0px 0px 10px rgb(0, 197, 0)'
         }
     }
     catch (err) {
@@ -154,6 +166,7 @@ windname.style.display = 'block';
         humidityimage.style.display = 'none';
         humidityname.style.display = 'none';
 windname.style.display = 'none';
+input.style.boxShadow= ' 0px 0px 10px red';
     }
 });
 
