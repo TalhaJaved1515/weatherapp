@@ -6,24 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather API</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Numans&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&family=Sail&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,h5,h6{
+            font-family: "Numans", serif;
+  font-weight: 400;
+  font-style: normal;
+        }
+    </style>
   
 </head>
 
-<body>
+
    
     <div class="h-screen	w-full border-dashed	   h-100  flex 	 justify-center	 items-center  ">
         <div class="  rounded-3xl     h-full w-full	 		">
             <div class="flex items-center	 	 justify-center	 sm:mt-20 mt-7    			w-full p-6">
                 <input type="text" id="input"
-                     class="text-2xl xl:rounded-3xl xl:text-4xl md:text-4xl w-4/5  rounded-2xl px-3  outline-none  md:w-6/12 border-2 border-red-400	 xl:w-5/12	shadow-custom-black	"
+                     class="text-2xl xl:rounded-3xl xl:text-4xl md:text-4xl w-4/5  rounded-2xl px-2   outline-none  md:w-6/12 border-red-400	 xl:w-5/12		 shadow-2xs  pb-2  pt-2
+
+
+                     " style="box-shadow: 0px 0px 10px rgba(30, 30, 30, 0.695);"
                     placeholder="Enter your city">
 
-                <img src="download (1).png" id="btn" alt="Search image"
+                <img src="1-removebg-preview.png" id="btn" alt="Search image"
                     class="w-14	h-14 md:w-16 md:h-16 xl:h-16 xl:w-16	ml-6  border-2 border-blue-400 rounded-full  p-2	">
             </div>
            
-            <p id="error" class="w-full  text-6xl  flex  justify-center  items-center "></p>
+            <p id="error" class="w-full  text-4xl  text-center
+             sm:text-4xl "></p>
             <div class="w-full  grid	     items-center   	  justify-center text-center	  mt-8 ">
                 <h1 class=" w-full  items-center md:text-6xl  text-6xl	 xl:text-8xl justify-center flex text-center	 "
                     id="city-temp"></h1>
