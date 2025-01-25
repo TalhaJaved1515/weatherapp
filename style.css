@@ -19,3 +19,14 @@ h3 {
 
 
 }
+body{
+    animation: bodyanimation 0.5s ease-in;
+}
+@keyframes bodyanimation {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 10;
+    }
+}

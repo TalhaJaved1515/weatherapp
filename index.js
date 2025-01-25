@@ -46,7 +46,9 @@ window.addEventListener('load', ()=>{
     if (savedinput) {
         input.value = savedinput
     }
-})
+});
+
+
 btn.addEventListener('click', async () => {
     const value = input.value;
  
