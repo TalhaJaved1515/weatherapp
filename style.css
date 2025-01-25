@@ -1,0 +1,21 @@
+h1,
+h2,
+h4,
+h5,
+h6,
+input {
+    font-family: "Numans", serif;
+    font-weight: 400;
+    font-style: normal;
+    /* border: 2px solid blue */
+}
+
+p,
+h3 {
+    font-family: "Numans", serif;
+    font-weight: 400;
+    font-style: normal;
+  
+
+
+}

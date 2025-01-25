@@ -36,6 +36,7 @@ humidityname.style.display = 'none';
 windname.style.display = 'none';
 timeimage.style.display = 'none';
 input.style.boxShadow= ' 0px 0px 10px rgba(30, 30, 30, 0.586)';
+btn.style.filter = 'drop-shadow(0px 0px 4px rgba(30, 30, 30, 0.416))'
 btn.addEventListener('click', async () => {
     const value = input.value;
  
@@ -53,6 +54,7 @@ btn.addEventListener('click', async () => {
             humidityname.style.display = 'none';
            windname.style.display = 'none';
            timeimage.style.display = 'none';
+           btn.style.filter = 'drop-shadow(0px 0px 4px rgb(255, 44, 44))'
 
            input.style.boxShadow= ' 0px 0px 10px red';
          
@@ -73,6 +75,8 @@ btn.addEventListener('click', async () => {
             humidityimage.style.display = 'block';
             humidityname.style.display = 'block';
 windname.style.display = 'block';
+btn.style.filter = 'drop-shadow(0px 0px 2px rgb(138, 255, 75))'
+
 input.style.boxShadow= ' 0px 0px 10px rgb(0, 197, 0)';
 timeimage.style.display = 'block';
 
@@ -83,7 +87,7 @@ timeimage.style.display = 'block';
         cityname.style.display = 'none';
         citytemp.style.display = 'none';
         citytime.style.display = 'none';
-        console.log('1')
+        
         cityhumidity.style.display = 'none';
         windspeed.style.display = 'none';
         windimage.style.display = 'none';
@@ -91,6 +95,7 @@ timeimage.style.display = 'block';
         humidityname.style.display = 'none';
 windname.style.display = 'none';
 timeimage.style.display = 'none';
+btn.style.filter = 'drop-shadow(0px 0px 2px rgb(255, 44, 44))'
 
 input.style.boxShadow= ' 0px 0px 10px red';
     }
