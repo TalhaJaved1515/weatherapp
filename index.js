@@ -11,6 +11,7 @@ const windspeed = document.getElementById('windspeed');
 const error = document.getElementById('error');
 const windname = document.getElementById('windname');
 const humidityname = document.getElementById('humidityname');
+const timeimage = document.getElementById('timeimage');
 
 async function getdata(cityname) {
     try {
@@ -33,6 +34,7 @@ windimage.style.display = 'none';
 humidityimage.style.display = 'none';
 humidityname.style.display = 'none';
 windname.style.display = 'none';
+timeimage.style.display = 'none';
 input.style.boxShadow= ' 0px 0px 10px rgba(30, 30, 30, 0.586)';
 btn.addEventListener('click', async () => {
     const value = input.value;
@@ -50,7 +52,8 @@ btn.addEventListener('click', async () => {
             humidityimage.style.display = 'none';
             humidityname.style.display = 'none';
            windname.style.display = 'none';
-           console.log('2')
+           timeimage.style.display = 'none';
+
            input.style.boxShadow= ' 0px 0px 10px red';
          
 
@@ -70,7 +73,9 @@ btn.addEventListener('click', async () => {
             humidityimage.style.display = 'block';
             humidityname.style.display = 'block';
 windname.style.display = 'block';
-input.style.boxShadow= ' 0px 0px 10px rgb(0, 197, 0)'
+input.style.boxShadow= ' 0px 0px 10px rgb(0, 197, 0)';
+timeimage.style.display = 'block';
+
         }
     }
     catch (err) {
@@ -85,6 +90,8 @@ input.style.boxShadow= ' 0px 0px 10px rgb(0, 197, 0)'
         humidityimage.style.display = 'none';
         humidityname.style.display = 'none';
 windname.style.display = 'none';
+timeimage.style.display = 'none';
+
 input.style.boxShadow= ' 0px 0px 10px red';
     }
 });
