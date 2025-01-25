@@ -36,7 +36,17 @@ humidityname.style.display = 'none';
 windname.style.display = 'none';
 timeimage.style.display = 'none';
 input.style.boxShadow= ' 0px 0px 10px rgba(30, 30, 30, 0.586)';
-btn.style.filter = 'drop-shadow(0px 0px 4px rgba(30, 30, 30, 0.416))'
+btn.style.filter = 'drop-shadow(0px 0px 4px rgba(30, 30, 30, 0.416))';
+input.addEventListener('input',()=>{
+    console.log('input');
+    localStorage.setItem('input' , input.value);
+});
+window.addEventListener('load', ()=>{
+    const savedinput = localStorage.getItem('input');
+    if (savedinput) {
+        input.value = savedinput
+    }
+})
 btn.addEventListener('click', async () => {
     const value = input.value;
  
