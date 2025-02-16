@@ -28,6 +28,7 @@ async function getdata(cityname) {
         if (!response.ok) {
             throw new Error(`Network response was not ok: ${response.statusText}`);
         }
+      
         return await response.json();
     } catch (err) {
         throw new Error(`Fetch failed: ${err.message}`);
@@ -84,6 +85,7 @@ btn.addEventListener('click', async () => {
 
         }
          else {
+            
             error.innerText = '';
             cityname.innerText = `${result.location.name}, ${result.location.region} - ${result.location.country}`;
             citytemp.innerText = `${result.current.temp_c}°C`;
