@@ -21,7 +21,7 @@ weathersection.style.display = 'none';
 setTimeout(() => {
     pageloader.style.display = 'none';
     weathersection.style.display = 'block'
-}, 5000);
+}, 3000);
 async function getdata(cityname) {
     try {
         const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=9572aed135c84c1aa7a172448251101&q=${cityname}&aqi=yes`);
