@@ -12,6 +12,7 @@ const error = document.getElementById('error');
 const windname = document.getElementById('windname');
 const humidityname = document.getElementById('humidityname');
 const timeimage = document.getElementById('timeimage');
+const loader = document.getElementById('loader');
 
 async function getdata(cityname) {
     try {
@@ -24,6 +25,7 @@ async function getdata(cityname) {
         throw new Error(`Fetch failed: ${err.message}`);
     }
 }
+loader.style.color='rgb(0, 197, 0)'
 error.style.color = 'red'
 cityname.style.display = 'none';
 citytemp.style.display = 'none';
@@ -44,16 +46,17 @@ input.addEventListener('input',()=>{
 window.addEventListener('load', ()=>{
     const savedinput = localStorage.getItem('input');
     if (savedinput) {
-        input.value = savedinput
+        input.value = savedinput;
     }
 });
 
 
 btn.addEventListener('click', async () => {
     const value = input.value;
- 
+    loader.innerText = 'Searching.....'
     try {
         const result = await getdata(value);
+        loader.innerText = '';
         if (result.error) {
             error.innerText = 'Not Found';
             cityname.style.display = 'none';
@@ -95,6 +98,7 @@ timeimage.style.display = 'block';
         }
     }
     catch (err) {
+        loader.innerText = '';
         error.innerText = 'Not Found';
         cityname.style.display = 'none';
         citytemp.style.display = 'none';
