@@ -13,7 +13,15 @@ const windname = document.getElementById('windname');
 const humidityname = document.getElementById('humidityname');
 const timeimage = document.getElementById('timeimage');
 const loader = document.getElementById('loader');
+const pageloader = document.getElementById('pageloader');
+const weathersection = document.getElementById('weathersection');
+pageloader.style.display = 'block';
+weathersection.style.display = 'none';
 
+setTimeout(() => {
+    pageloader.style.display = 'none';
+    weathersection.style.display = 'block'
+}, 5000);
 async function getdata(cityname) {
     try {
         const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=9572aed135c84c1aa7a172448251101&q=${cityname}&aqi=yes`);
@@ -74,7 +82,8 @@ btn.addEventListener('click', async () => {
            input.style.boxShadow= ' 0px 0px 10px red';
          
 
-        } else {
+        }
+         else {
             error.innerText = '';
             cityname.innerText = `${result.location.name}, ${result.location.region} - ${result.location.country}`;
             citytemp.innerText = `${result.current.temp_c}°C`;
