@@ -7,7 +7,31 @@ input {
     font-family: "Numans", serif;
     font-weight: 400;
     font-style: normal;
+    color: black;
     /* border: 2px solid blue */
+}
+h1::selection{
+    color:rgb(0, 47, 255);
+    /* border: 2px solid blue */
+}
+h2::selection{
+  color:aquamarine;
+}
+h3::selection{
+  color:#fffc00
+}
+p::selection{
+  color:coral;
+}
+input::selection{
+  color: rgba(0, 0, 0, 0.539);
+}
+
+
+html {
+
+ 
+  -webkit-tap-highlight-color: transparent;
 }
 
 p,
@@ -21,6 +45,8 @@ h3 {
 }
 body{
     animation: bodyanimation 0.5s ease-in;
+  
+   
 }
 @keyframes bodyanimation {
     0%{
@@ -71,12 +97,12 @@ body{
     margin-left: -25px;
     z-index: 5;
   }
-  * {
+  /*  {
     -webkit-user-select: none; /* Safari */
-    -moz-user-select: none;    /* Firefox */
-    -ms-user-select: none;     /* Internet Explorer/Edge */
-    user-select: none;         /* Standard syntax */
-  }
+    /* -moz-user-select: none;    /* Firefox */
+    /* -ms-user-select: none;     /* Internet Explorer/Edge */
+    /* user-select: none;         Standard syntax */
+  /* } */ 
   .left-front {
     width: 65px;
     height: 65px;
